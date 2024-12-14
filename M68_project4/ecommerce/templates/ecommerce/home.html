@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>Bienvenido, {{ user.username }}</h1>
+    <p><a href="{% url 'logout' %}">Cerrar sesión</a></p>
+
+    <h2>Productos disponibles:</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>Precio: ${{ product.price }}</p>
+                <p>Stock: {{ product.stock }}</p>
+            </li>
+        {% empty %}
+            <p>No hay productos disponibles en este momento.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
